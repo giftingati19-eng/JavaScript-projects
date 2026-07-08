@@ -1,2 +1,2 @@
 # Gift-ingati
-Python &amp; java projects for BSc maths &amp; IT prep 
+JavaScript home projects at age 19
