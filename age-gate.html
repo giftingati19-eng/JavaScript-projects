@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Verification Gate</title>
+    <style>
+        body {font-family: Arial, sans-serif; background: #1a1a2e; color: #eee; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;}
+       .container {background: #16213e; padding: 40px; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.5); text-align: center; max-width: 400px;}
+        h1 {color: #0f3460; margin-bottom: 20px;}
+        input {padding: 12px; font-size: 16px; border: 2px solid #0f3460; border-radius: 5px; width: 200px; margin: 10px 0; background: #1a1a2e; color: #eee;}
+        button {padding: 12px 30px; font-size: 16px; background: #e94560; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px;}
+        button:hover {background: #c73e54;}
+        #message {margin-top: 20px; font-size: 18px; font-weight: bold; min-height: 25px;}
+       .success {color: #4ecca3;}.error {color: #e94560;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Age Verification</h1>
+        <p>Please enter your age to continue</p>
+        <input type="number" id="ageInput" placeholder="Enter your age" min="0" max="120">
+        <br>
+        <button onclick="verifyAge()">Verify Age</button>
+        <div id="message"></div>
+    </div>
+    <script>
+        function verifyAge() {
+            const age = parseInt(document.getElementById('ageInput').value);
+            const messageDiv = document.getElementById('message');
+            if (isNaN(age) || age < 0) {
+                messageDiv.textContent = 'Please enter a valid age';
+                messageDiv.className = 'error';
+            } else if (age >= 18) {
+                messageDiv.textContent = 'Access Granted! Welcome 🎉';
+                messageDiv.className = 'success';
+            } else {
+                messageDiv.textContent = 'Access Denied. You must be 18+';
+                messageDiv.className = 'error';
+            }
+        }
+        document.getElementById('ageInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') verifyAge();
+        });
+    </script>
+</body>
+</html>
